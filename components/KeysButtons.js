@@ -3,14 +3,13 @@ import { View } from 'react-native';
 import { Text, ButtonGroup } from 'react-native-elements';
 import { connect } from 'react-redux';
 
-import { selectCapo } from '../actions';
+import { selectKeyIndex } from '../actions'
 import { BUTTON_GROUP_STYLES } from '../constants';
 
-const CAPO_POSITIONS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
-
-class CapoButtons extends Component {
+class KeysButtons extends Component {
     render() {
-        const { selectedCapo } = this.props.selectedValues;
+        const { selectedValues: { selectedKeyIndex }, keys } = this.props;
+        const keyButtons = keys.map(key => (key.shortKey ? '/' : [key.key]))
         const {
             containerStyle,
             buttonStyle,
@@ -18,12 +17,12 @@ class CapoButtons extends Component {
         } = BUTTON_GROUP_STYLES;
         return (
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text h3>Capo</Text>
-                <Text h1 style={{ marginBottom: 2 }}>{selectedCapo}</Text>
+                <Text h3>Key</Text>
+                <Text h1 style={{ marginBottom: 2 }}>{keys[selectedKeyIndex].key}</Text>
                 <ButtonGroup
-                    onPress={index => this.props.selectCapo(index + 1)}
-                    selectedIndex={selectedCapo - 1}
-                    buttons={CAPO_POSITIONS}
+                    onPress={index => this.props.selectKeyIndex(index)}
+                    buttons={keyButtons}
+                    selectedIndex={selectedKeyIndex}
                     containerStyle={containerStyle}
                     buttonStyle={buttonStyle}
                     selectedTextStyle={selectedTextStyle}
@@ -33,8 +32,9 @@ class CapoButtons extends Component {
     }
 }
 
-const mapStateToProps = ({ selectedValues }) => ({
+const mapStateToProps = ({ keys, selectedValues }) => ({
+    keys,
     selectedValues
-});
+})
 
-export default connect(mapStateToProps, { selectCapo })(CapoButtons);
+export default connect(mapStateToProps, { selectKeyIndex })(KeysButtons);
