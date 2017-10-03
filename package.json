@@ -1,6 +1,7 @@
 {
   "name": "CapoKeys",
-  "version": "0.1.0",
+  "version": "1.1.0",
+  "description": "A transposing tool for helping guitarists work out where to place their capos.",
   "private": true,
   "devDependencies": {
     "jest-expo": "~20.0.0",

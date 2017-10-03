@@ -17,7 +17,3 @@ export default class App extends Component {
     );
   }
 }
-
-// Interstitial ID: 318505008618467_318530155282619
-
-// Banner Ad ID: 318505008618467_318530518615916

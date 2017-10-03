@@ -10,6 +10,7 @@ import CapoButtons from '../components/CapoButtons';
 import CapoKey from '../components/CapoKey';
 import ViewChordsButton from '../components/ViewChordsButton';
 import ChordsModal from '../modals/ChordsModal';
+import BottomBannerAd from '../components/BottomBannerAd';
 
 const cacheImages = images => images.map(image => {
     if (typeof image === 'string') return Image.prefetch(image);
@@ -66,7 +67,7 @@ export default class MainScreen extends Component {
 
                 <ViewChordsButton style={buttonContainerStyle} />
 
-                {/* BottomBannerAd */}
+                <BottomBannerAd />
             </View>
         )
     }
